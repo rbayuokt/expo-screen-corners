@@ -3,19 +3,21 @@
   "version": "1.0.0",
   "main": "index.ts",
   "dependencies": {
-    "expo": "~57.0.6",
-    "react": "19.2.3",
-    "react-native": "0.86.0"
+    "expo": "~54.0.36",
+    "expo-screen-corners": "file:..",
+    "react": "19.1.0",
+    "react-native": "0.81.5"
   },
   "devDependencies": {
-    "@types/react": "~19.2.2",
-    "typescript": "~6.0.3"
+    "@types/react": "~19.1.10",
+    "typescript": "~5.9.2"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "prebuild": "npx expo prebuild --clean"
   },
   "private": true,
   "expo": {
