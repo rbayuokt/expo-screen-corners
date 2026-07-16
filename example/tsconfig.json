@@ -1,0 +1,10 @@
+{
+  "extends": "expo/tsconfig.base",
+  "compilerOptions": {
+    "strict": true,
+    "paths": {
+      "expo-screen-corners": ["../src/index"],
+      "expo-screen-corners/*": ["../src/*"]
+    }
+  }
+}
