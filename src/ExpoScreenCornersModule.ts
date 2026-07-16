@@ -1,13 +1,13 @@
 import { NativeModule, requireNativeModule } from 'expo';
 
 import { ExpoScreenCornersModuleEvents } from './ExpoScreenCorners.types';
-import type { ExpoScreenCornersModuleSharedObject } from './ExpoScreenCornersModuleSharedObject';
 
 declare class ExpoScreenCornersModule extends NativeModule<ExpoScreenCornersModuleEvents> {
-  PI: number;
-  hello(): string;
-  setValueAsync(value: string): Promise<void>;
-  ExpoScreenCornersModuleSharedObject: typeof ExpoScreenCornersModuleSharedObject;
+  /**
+   * Returns the physical corner radius of the device's display, in points.
+   * Returns `0` when the value cannot be determined.
+   */
+  getScreenCornerRadius(): number;
 }
 
 export default requireNativeModule<ExpoScreenCornersModule>('ExpoScreenCorners');
