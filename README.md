@@ -1,4 +1,4 @@
-![expo-mlkit-ocr](docs/expo-screen-corners.png)
+![expo-screen-corners](docs/expo-screen-corners.png)
 
 # expo-screen-corners
 
@@ -39,13 +39,13 @@ function Card() {
 }
 ```
 
-`getScreenCornerRadius()` is synchronous and returns the radius in points. The value doesn't change while the app is running, so you can read it once.
+`getScreenCornerRadius()` is synchronous and returns the radius in React Native units (points on iOS, dp on Android). The value doesn't change while the app is running, so you can read it once.
 
 ## API
 
 ### `getScreenCornerRadius(): number`
 
-Returns the display corner radius in points. Returns `0` when the value can't be determined. That includes devices with square corners (older iPhones and older iPads) and platforms that don't expose it.
+Returns the display corner radius. iOS reports points, Android reports dp, and both match React Native's style units so you can pass the value straight to `borderRadius`. Returns `0` when it can't be determined: devices with square corners, Android 11 and older, and web.
 
 ## Platform support
 
@@ -53,7 +53,7 @@ Returns the display corner radius in points. Returns `0` when the value can't be
 | --- | --- |
 | iOS    | Yes, reads the real display radius |
 | iPadOS | Yes, same as iOS. Real value on rounded-corner iPads, `0` on older square-cornered models |
-| Android | Returns `0` (see below) |
+| Android | Yes on Android 12 (API 31) and up. `0` on older versions |
 | Web    | Returns `0` |
 
 ## How it works
@@ -62,12 +62,13 @@ On iOS the display corner radius lives in a private `UIScreen` property, `_displ
 
 Because it relies on a private property, there's a chance a future iOS version renames or removes it. If that happens, the call returns `0` instead of crashing, so it fails safely.
 
-Android is a stub for now. There's `android.R.dimen.rounded_corner_radius` (API 31+) and the `RoundedCorner` API via `WindowInsets`, but neither is reliably populated across manufacturers, so returning `0` is more honest than returning a wrong number. If a dependable source shows up, it can be added later.
+On Android it uses the official `RoundedCorner` API (`WindowInsets.getRoundedCorner`), added in Android 12 (API 31). It reads the four corners and returns the largest radius, converted from pixels to dp so the value lines up with React Native's units. On Android 11 and older the API doesn't exist, so it returns `0`.
 
 ## Requirements
 
 - A development build (not Expo Go)
 - iOS 15.1+
+- Android 12 (API 31)+ for a real value (older versions return `0`)
 
 ## License
 

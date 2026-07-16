@@ -1,6 +1,6 @@
 {
   "name": "expo-screen-corners",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Get the physical screen corner radius",
   "main": "build/index.js",
   "types": "build/index.d.ts",
