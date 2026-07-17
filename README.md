@@ -18,6 +18,8 @@ The usual workaround is to hardcode a number, or keep a table of "iPhone 15 Pro 
 
 It's a small, niche thing. Most apps will never need it. But if you're the kind of person who cares about a UI lining up perfectly with the hardware, or you're building something where that detail matters, this saves you from maintaining a device list by hand. I'd rather it exist and sit unused than have someone reinvent it later.
 
+![Concentric vs hardcoded corners](https://raw.githubusercontent.com/rbayuokt/expo-screen-corners/main/docs/expo-screen-corners-case.png)
+
 ## Installation
 
 ```bash

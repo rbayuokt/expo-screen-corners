@@ -28,6 +28,9 @@ __tests__/
 # Example app
 /example/
 
+# Docs
+/docs/
+
 # Dev tooling & configs (not needed by consumers)
 /internal/
 /babel.config.js
