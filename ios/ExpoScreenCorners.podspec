@@ -1,6 +1,10 @@
+require 'json'
+
+package = JSON.parse(File.read(File.join(__dir__, '..', 'package.json')))
+
 Pod::Spec.new do |s|
   s.name           = 'ExpoScreenCorners'
-  s.version        = '0.2.0'
+  s.version        = package['version']
   s.summary        = 'Get the physical screen corner radius of a device'
   s.description    = 'Exposes the physical display corner radius natively so UIs can match the actual screen corners.'
   s.author         = 'rbayuokt'
